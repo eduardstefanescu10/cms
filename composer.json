@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "CMS\\": "vendor/cms/cms/src"
+        }
+    },
+    "require": {
+        "cms/cms": "^1.0",
+        "phpmailer/phpmailer": "^6.1"
+    }
+}
