@@ -7,6 +7,10 @@
 $router->get('/404', 'NotFoundController@index');
 
 
+// Dashboard
+$router->get('/', 'DashboardController@index');
+
+
 // Products CRUD
 $router->post('/api/products/product/create', 'ProductsController@create');
 $router->get('/api/products/product/read/:ID', 'ProductsController@read');

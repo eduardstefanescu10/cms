@@ -1,0 +1,50 @@
+/* 768px Screen width */
+@media(min-width:768px) {
+    .main-wrapper {
+        padding-left: 250px;
+    }
+    .main-wrapper.toggled {
+        padding-left: 0;
+    }
+    .sidebar-wrapper {
+        width: 250px;
+    }
+    .main-wrapper.toggled .sidebar-wrapper {
+        width: 0;
+    }
+    .content-wrapper {
+        padding: 20px 40px;
+        position: relative;
+    }
+    .main-wrapper.toggled .content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+
+/* 576px Screen width */
+@media(max-width:576px) {
+    .table-buttons {
+        width: 100%;
+        margin-bottom: 0px;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .left-box {
+        float: none;
+        text-align: left;
+    }
+    .right-box {
+        float: none;
+        text-align: left;
+    }
+    .search-button {
+        margin-top: -16px;
+    }
+    .search-box {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+}

@@ -1,0 +1,58 @@
+<?php
+
+
+// Get header template
+include_once 'tmp/logged/header.phtml';
+
+
+// Get sidebar template
+include_once 'tmp/logged/sidebar.phtml';
+
+
+?>
+<div class="content-wrapper">
+    <h1></h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="info-box">
+                <div class="info-header" id="label_traffic"></div>
+                <div class="info-body">
+                    <div class="statistics" id="traffic_statistics"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-box">
+                <div class="info-header" id="label_devices"></div>
+                <div class="info-body">
+                    <div class="statistics" id="devices_statistics"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="info-box">
+                <div class="info-header" id="label_new_orders"></div>
+                <div class="info-body" id="orders_list"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+
+
+// Get footer links template
+include_once 'tmp/logged/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/dashboard.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get footer template
+include_once 'tmp/logged/footer.phtml';
+
+
+?>

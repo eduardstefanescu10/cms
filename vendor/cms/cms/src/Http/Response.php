@@ -141,15 +141,18 @@ class Response
      */
     public function send()
     {
-        // Loop headers
-        foreach($this->headers as $header) {
-            // Send header
-            header($header, true);
-        }
+        // Check if headers are sent
+        if (!headers_sent()) {
+            // Loop headers
+            foreach($this->headers as $header) {
+                // Send header
+                header($header, true);
+            }
 
-        // Check if content is not empty
-        if (!empty($this->content)) {
-            echo json_encode($this->content);
+            // Check if content is not empty
+            if (!empty($this->content)) {
+                echo json_encode($this->content);
+            }
         }
     }
 }

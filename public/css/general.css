@@ -1,0 +1,42 @@
+/* General styles */
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: Arial;
+    background: #f2f3f8;
+}
+
+
+/* Links */
+a {
+    color: #ce00ce;
+}
+
+a:hover, a:focus, a:visited {
+    color: #ce00ce;
+    text-decoration: none;
+}
+
+
+/* Titles */
+h1 {
+    margin-bottom: 20px;
+}
+
+
+/* Table */
+th {
+    text-align: center;
+}
+td {
+    text-align: center;
+}
+
+
+/* Other */
+.center {
+    text-align: center;
+}

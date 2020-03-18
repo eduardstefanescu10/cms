@@ -6,8 +6,12 @@ namespace App\Controllers;
 
 class NotFoundController extends Controller
 {
+    /**
+     * Default action
+     */
     public function index()
     {
-        $this->setContent(404);
+        // Get view
+        view('404');
     }
 }

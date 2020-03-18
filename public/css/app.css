@@ -1,0 +1,7 @@
+/* Get CSS files*/
+@import 'general.css';
+@import 'forms.css';
+@import 'header.css';
+@import 'sidebar.css';
+@import 'content.css';
+@import 'responsive.css';

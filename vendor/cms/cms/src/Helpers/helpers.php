@@ -54,5 +54,26 @@ if (!function_exists('cleanUrl')) {
 }
 
 
+if (!function_exists('view')) {
+    /**
+     * Get view
+     *
+     * @param string $path
+     * @param array $params
+     */
+    function view(string $path, $params = []) {
+        // Define full view path
+        $fullPath = VIEWS . $path . '.phtml';
+
+        // Check if view exists
+        if (file_exists($fullPath)) {
+            include_once $fullPath;
+        } else {
+            echo '<b>' . $path . '</b> not found';
+        }
+    }
+}
+
+
 
 ?>

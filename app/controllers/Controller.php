@@ -2,7 +2,6 @@
 
 
 namespace App\Controllers;
-use CMS\Http\Response;
 
 
 class Controller

@@ -1,0 +1,49 @@
+/* Forms style */
+
+/* Buttons */
+.btn-primary {
+    color: #fff;
+    background-color: #ce00ce;
+    border-color: #ce00ce;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #980098;
+    border-color: #980098;
+    -webkit-transition: all 1.0s ease;
+    -moz-transition: all 1.0s ease;
+    -o-transition: all 1.0s ease;
+    transition: all 1.0s ease;
+}
+
+/* Inputs */
+.form-control {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.full-width {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+/* Error message box */
+.error {
+    color: #ef0000;
+    font-weight: bold;
+    visibility: hidden;
+}
+.error-show {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    min-height: 30px;
+    visibility: visible;
+}
+.success-msg {
+    color: #21923d;
+}
