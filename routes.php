@@ -7,6 +7,11 @@
 $router->get('/404', 'NotFoundController@index');
 
 
+// Log in
+$router->get('/login', 'LoginController@index');
+$router->post('/api/account/login', 'LoginController@login');
+
+
 // Dashboard
 $router->get('/', 'DashboardController@index');
 

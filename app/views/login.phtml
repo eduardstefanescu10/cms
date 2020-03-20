@@ -1,0 +1,51 @@
+<?php
+
+
+// Get header template
+include_once 'tmp/guest/header.phtml';
+
+
+?>
+<div class="row">
+    <div class="col-sm-8 col-md-4">
+        <form class="action-form" id="login_form" method="POST">
+            <h1></h1>
+            <div class="form-group">
+                <label id="label_username"></label>
+                <input type="text" name="username" class="form-control" id="login_username" autocomplete="off" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label id="label_password"></label>
+                <input type="password" name="password" class="form-control" id="login_password" maxlength="50">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="remember" class="form-check-input" id="login_remember" value="">
+                <label class="form-check-label" id="label_remember_me"></label>
+            </div>
+            <button type="submit" class="btn btn-primary full-width" id="button_login"></button>
+            <div class="error" id="error_message"></div>
+            <div class="center footer">
+                <a href="<?php echo OPTIONS['URL']; ?>/forgot" id="label_password_forgot"></a>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4 col-md-8"></div>
+</div>
+<?php
+
+
+// Get header template
+include_once 'tmp/guest/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/login.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get header template
+include_once 'tmp/guest/footer.phtml';
+
+
+?>
+

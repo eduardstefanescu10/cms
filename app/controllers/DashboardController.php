@@ -2,6 +2,7 @@
 
 
 namespace App\Controllers;
+use CMS\Auth\Auth;
 
 
 class DashboardController extends Controller
@@ -11,8 +12,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Get view
-        view('dashboard');
+        // Check if logged
+        if (Auth::checkLogin()) {
+            // Get view
+            view('dashboard');
+        } else {
+            // Redirect to logout page
+            redirect('logout');
+        }
     }
 }
 

@@ -11,6 +11,8 @@ let lang = {
     'title_pages': 'Pages',
     'title_account': 'Account',
     'title_logout': 'Log out',
+    'title_login': 'Log in',
+    'title_forgot_password:': 'Recover password',
     // Labels
     'label_version': 'Version',
     'label_traffic': 'Traffic',
@@ -18,5 +20,15 @@ let lang = {
     'label_views': 'Views',
     'label_mobile': 'Mobile',
     'label_web': 'Web',
-    'label_new_orders': 'New orders'
+    'label_new_orders': 'New orders',
+    'label_username': 'Username',
+    'label_password': 'Password',
+    'label_password_forgot': 'I forgot my password',
+    'label_remember_me': 'Remember me',
+    'label_welcome': 'Welcome back!',
+    'label_please_wait': 'Please wait...',
+    // Buttons
+    'button_login': 'Log in',
+    // Errors
+    'error_login': 'Wrong username or password'
 }
