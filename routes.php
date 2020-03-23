@@ -3,6 +3,7 @@
 
 // Routes
 
+
 // 404
 $router->get('/404', 'NotFoundController@index');
 
@@ -10,6 +11,10 @@ $router->get('/404', 'NotFoundController@index');
 // Log in
 $router->get('/login', 'LoginController@index');
 $router->post('/api/account/login', 'LoginController@login');
+
+
+// Log out
+$router->get('/logout', 'LogoutController@index');
 
 
 // Dashboard

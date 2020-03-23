@@ -153,7 +153,19 @@ if (!function_exists('getSession')) {
 }
 
 
-if (!function_exists('setCookie')) {
+if (!function_exists('clearSession')) {
+    /**
+     * Clear session
+     *
+     * @param string $key
+     */
+    function clearSession(string $key) {
+        unset($_SESSION[$key]);
+    }
+}
+
+
+if (!function_exists('setCook')) {
     /**
      * Set cookie
      *
@@ -161,8 +173,8 @@ if (!function_exists('setCookie')) {
      * @param mixed $value
      * @param int $days
      */
-    function setCookie(string $key, $value, int $days) {
-        setsession($key, base64_encode($value), time()+($days * 86400), '/', '', false, true);
+    function setCook(string $key, $value, int $days) {
+        setcookie($key, base64_encode($value), time()+($days * 86400), '/', '', false, true);
     }
 }
 
@@ -179,6 +191,19 @@ if (!function_exists('getCookie')) {
         return base64_decode($_COOKIE[$key]);
     }
 }
+
+
+if (!function_exists('clearCookie')) {
+    /**
+     * Clear cookie
+     *
+     * @param string $key
+     */
+    function clearCookie(string $key) {
+        setcookie($key, null, time()-86400, '/', '');
+    }
+}
+
 
 
 if (!function_exists('sanitizeUsername')) {

@@ -44,10 +44,10 @@ class AccountModel extends Model
                     // Check remember
                     if ($remember) {
                         // Set cookies
-                        setCookie('ID',       $ID, 30);
-                        setCookie('username', $username, 30);
-                        setCookie('password', $password, 30);
-                        setCookie('hash',     $sessionHash, 30);
+                        setCook('ID',       $ID, 30);
+                        setCook('username', $username, 30);
+                        setCook('password', $password, 30);
+                        setCook('hash',     $sessionHash, 30);
                     } else {
                         // Set sessions
                         setSession('ID',       $ID);
