@@ -1,1 +1,40 @@
-<h1>404</h1>
+<?php
+
+
+// Get header template
+include_once 'tmp/guest/header.phtml';
+
+
+?>
+<div class="row">
+    <div class="col-md-4">
+        <div class="action-form">
+            <h1></h1>
+            <p id="label_message_404"></p>
+            <br>
+            <div class="center footer">
+                <a href="<?php echo OPTIONS['URL'] . '/login'; ?>" id="label_message_back_to_login"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+
+    </div>
+</div>
+<?php
+
+
+// Get links template
+include_once 'tmp/guest/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/404.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get footer template
+include_once 'tmp/guest/footer.phtml';
+
+
+?>

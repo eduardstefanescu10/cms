@@ -1,0 +1,43 @@
+<?php
+
+
+// Get header template
+include_once 'tmp/guest/header.phtml';
+
+
+?>
+<div class="row">
+    <div class="col-md-4">
+        <form class="action-form" id="forgot_form" method="post">
+            <h1></h1>
+            <p class="center" id="success_message"></p>
+            <div class="form-group">
+                <label id="label_email"></label>
+                <input type="email" name="email" class="form-control" id="forgot_email" autocomplete="off" maxlength="255">
+            </div>
+            <button type="submit" class="btn btn-primary full-width" id="button_recover"></button>
+            <div class="error" id="error_message"></div>
+            <div class="center footer">
+                <a href="<?php echo OPTIONS['URL']; ?>/login" id="label_message_back_to_login"></a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8"></div>
+</div>
+<?php
+
+
+// Get links template
+include_once 'tmp/guest/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/forgot.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get footer template
+include_once 'tmp/guest/footer.phtml';
+
+
+?>

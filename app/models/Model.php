@@ -142,11 +142,11 @@ class Model
      * @param string $table
      * @param array $params
      * @param array $where
-     * @param array $options
+     * @param string $options
      *
      * @return int
      */
-    protected function update(string $table, $params = array(), $where = array(), $options = array())
+    protected function update(string $table, $params = array(), $where = array(), string $options = '')
     {
         // Connect to database
         $this->dbc = $this->db->connect();

@@ -1,0 +1,13 @@
+<h1>Hello,</h1>
+<p>It seems that you forgot your password.</p>
+<p>If yes, click the link below:</p>
+<p>
+    <b>
+        <a href="<?php echo $params['url']; ?>/password/reset/<?php echo $params['ID'] . '/'  . $params['passCrypt']; ?>">
+            <?php echo $params['url']; ?>/password/reset/<?php echo $params['ID'] . '/'  . $params['passCrypt']; ?>
+        </a>
+    </b>
+</p>
+<p>After that, your new password will be <b><?php echo $params['randomPass']; ?></b></p>
+<p>If you don't click the link you can log in using the same password.</p>
+<p>Have nice day!</p>

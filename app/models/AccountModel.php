@@ -140,4 +140,131 @@ class AccountModel extends Model
             return false;
         }
     }
+
+    /**
+     * Update admin's temporarily password
+     *
+     * @param string $email
+     * @param string $tempPass
+     *
+     * @return bool
+     */
+    public function resetPassword(string $email, string $tempPass)
+    {
+        $query = $this->update(
+            'cms_admins',
+            [
+                'passwordRecovery' => $tempPass
+            ],
+            [
+                'email' => $email
+            ]
+        );
+
+        // Check results
+        if ($query == 1) {
+            // Success
+            return true;
+        } else {
+            // Failed
+            return false;
+        }
+    }
+
+    /**
+     * Check if email exists and update password
+     *
+     * @param string $email
+     * @param string $tempPass
+     *
+     * @return int
+     */
+    public function forgot(string $email, string $tempPass)
+    {
+        $sql = "SELECT ID FROM cms_admins WHERE email=:email AND status='1' LIMIT 1";
+        $query = $this->get(
+            $sql,
+            [
+                'email' => $email
+            ]
+        );
+
+        // Check result
+        if ($query !== null) {
+            // Check query count
+            if (count($query) == 1) {
+                // Update password
+                $result = $this->resetPassword($email, $tempPass);
+
+                // Check result
+                if ($result) {
+                    // Success
+                    return $query[0]['ID'];
+                } else {
+                    // Failed
+                    return -1;
+                }
+            } else {
+                // Not found
+                return 0;
+            }
+        } else {
+            // Failed
+            return -1;
+        }
+    }
+
+    /**
+     * Update temporarily password
+     *
+     * @param int $ID
+     * @param string $tempPass
+     *
+     * @return bool
+     */
+    public function updateTempPass(int $ID, string $tempPass)
+    {
+        $sql = "SELECT ID FROM cms_admins WHERE ID=:ID AND passwordRecovery=:tempPass AND status='1' LIMIT 1";
+        $query = $this->get(
+            $sql,
+            [
+                'ID'       => $ID,
+                'tempPass' => $tempPass
+            ]
+        );
+
+        // Check query
+        if ($query != null) {
+            // Check query count
+            if (count($query) == 1) {
+                // Update password
+                $query2 = $this->update(
+                    'cms_admins',
+                    [
+                        'passwordRecovery' => '',
+                        'password'         => $tempPass
+                    ],
+                    [
+                        'ID' => $ID
+                    ],
+                    'LIMIT 1'
+                );
+
+                // Check query
+                if ($query2 == 1) {
+                    // Success
+                    return true;
+                } else {
+                    // Failed
+                    return false;
+                }
+            } else {
+                // Not found
+                return false;
+            }
+        } else {
+            // Failed
+            return false;
+        }
+    }
 }

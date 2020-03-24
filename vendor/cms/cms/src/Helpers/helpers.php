@@ -232,6 +232,13 @@ if (!function_exists('sanitizeUsername')) {
 
 
 if (!function_exists('sanitizeString')) {
+    /**
+     * Sanitize string
+     *
+     * @param $string
+     *
+     * @return string
+     */
     function sanitizeString($string) {
         // Check string length
         if (strlen($string) > 256) {
@@ -241,6 +248,62 @@ if (!function_exists('sanitizeString')) {
 
         // Return only string
         return preg_replace('/[^a-zA-Z0-9]/', '', $string);
+    }
+}
+
+
+if (!function_exists('sanitizeEmail')) {
+    /**
+     * Sanitize email
+     *
+     * @param string $email
+     *
+     * @return string
+     */
+    function sanitizeEmail($email) {
+        return filter_var($email, FILTER_SANITIZE_EMAIL);
+    }
+}
+
+
+if (!function_exists('getRandomPass')) {
+    /**
+     * Generate random password
+     *
+     * @return string
+     */
+    function getRandomPass() {
+        // Shuffle string
+        $shuffledString = str_shuffle("ABCDEFGHIJKLMNOPRSTQVWXYZabcdefghijklmnoprstqvwxyz1234567890");
+
+        return substr($shuffledString, 0, 8);
+    }
+}
+
+
+if (!function_exists('bufferView')) {
+    /**
+     * Buffer view
+     *
+     * @param string $path
+     * @param array $params
+     *
+     * @return string
+     */
+    function bufferView(string $path, $params = []) {
+        // Check if view exists
+        if (file_exists(VIEWS . $path . '.phtml')) {
+            // Start buffer
+            ob_start();
+
+            // Get view
+            include_once VIEWS . $path . '.phtml';
+
+            // Close buffer
+            return ob_get_clean();
+        }
+
+        return '';
     }
 }
 
