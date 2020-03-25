@@ -85,6 +85,9 @@ class Database
             // Get error
             $this->error = $exception;
 
+            // Save log
+            saveLog('Database connection failed: ' . $this->error);
+
             return null;
         }
     }

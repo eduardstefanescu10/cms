@@ -70,6 +70,9 @@ class Model
             // Close connection
             $this->dbc = null;
 
+            // Save log
+            saveLog($stm->errorInfo() . " INSERT INTO $table ($columnsList) VALUES($valuesList)");
+
             return 0;
         } else {
             // Get inserted ID
@@ -126,6 +129,9 @@ class Model
         if (!$stm->execute()) {
             // Close connection
             $this->dbc = null;
+
+            // Save log
+            saveLog($stm->errorInfo() . ' ' . $sql);
 
             return null;
         } else {
@@ -190,6 +196,9 @@ class Model
             // Close connection
             $this->dbc = null;
 
+            // Save log
+            saveLog($stm->errorInfo() . " UPDATE $table SET $updateValues WHERE $whereValues $options");
+
             return 0;
         } else {
             // Close connection
@@ -204,6 +213,7 @@ class Model
      *
      * @param string $table
      * @param string $where
+     * @param null|string $limit
      *
      * @return null|int $limit
      */
@@ -217,13 +227,25 @@ class Model
             return 0;
         }
 
+        // Variable
+        $sql = '';
+
         // Check limit
         if ($limit == null) {
-            // Prepare statement
-            $stm = $this->dbc->exec("DELETE FROM $table WHERE $where");
+            // No limit
+            $sq1 = "DELETE FROM $table WHERE $where";
         } else {
-            // Prepare statement
-            $stm = $this->dbc->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+            // With limit
+            $sql = "DELETE FROM $table WHERE $where LIMIT $limit";
+        }
+
+        // Execute
+        $stm = $this->dbc->exec($sql);
+
+        // Check if no row affected
+        if ($stm == 0) {
+            // Save log
+            saveLog($this->dbc->errorInfo(), ' ' . $sql);
         }
 
         // Close connection

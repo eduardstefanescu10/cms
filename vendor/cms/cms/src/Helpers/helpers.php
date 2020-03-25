@@ -1,6 +1,46 @@
 <?php
 
 
+if (!function_exists('saveLog')) {
+    /**
+     * Save new log
+     *
+     * @param $message
+     */
+    function saveLog($message) {
+        // Log file name
+        $fileName = 'cms-' . date('Y') . '-' . date('m') . '-' . date('d') . '.log';
+
+        // Create file path
+        $filePath = LOGS . $fileName;
+
+        // Check if file doesn't exists
+        if (!file_exists($filePath)) {
+            // Create new log file
+            $newFile = fopen($filePath, 'w+');
+            fclose($newFile);
+        }
+
+        // Get log time
+        $logTime = '['
+            . date('Y') . '-'
+            . date('m') . '-'
+            . date('d') . ' '
+            . date('H') . ':'
+            . date('i') . ':'
+            . date('s') .
+        ']';
+
+        // Create log message
+        $message = $logTime . ' ' . $message . "\r\n";
+
+        // Write log in file
+        error_log($message, 3, $filePath);
+    }
+}
+
+
+
 if (!function_exists('redirect')) {
     /**
      * Redirect to the given url

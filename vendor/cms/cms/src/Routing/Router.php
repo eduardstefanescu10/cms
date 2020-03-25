@@ -167,8 +167,11 @@ class Router
     {
         // Check if doesn't have controller and method
         if (strpos($controller, '@') === false) {
-            echo 'Missing controller or method for route: <b>' . $controller . '</b>';
-            exit();
+            // Save log
+            saveLog('Missing controller or method for route: ' . $controller);
+
+            // Redirect to 404 page
+            redirect('404');
         }
 
         // Get route controller and method
@@ -181,6 +184,10 @@ class Router
 
         // Check if controller doesn't exists
         if (!file_exists($controllerPath)) {
+            // Save log
+            saveLog('Controller path not found: ' . $controllerPath);
+
+            // Redirect to 404 page
             redirect('404');
         }
 
@@ -191,11 +198,19 @@ class Router
         if (class_exists($routeController)) {
             $controller = new $routeController();
         } else {
+            // Save log
+            saveLog('Controller namespace not found: ' . $routeController);
+
+            // Redirect to 404 page
             redirect('404');
         }
 
         // Check if the controller method doesn't exists
         if (!method_exists($controller, $routeMethod)) {
+            // Save log
+            saveLog('Method ' . $routeMethod . ' not found for controller ' . $controller);
+
+            // Redirect to 404 page
             redirect('404');
         }
 
@@ -203,6 +218,10 @@ class Router
         if (is_callable([$controller, $routeMethod])) {
             return call_user_func([$controller, $routeMethod], $params);
         } else {
+            // Save log
+            saveLog('Could not run controller ' . $controller . ' with method ' . $routeMethod);
+
+            // Redirect to 404 page
             redirect('404');
         }
     }
