@@ -28,6 +28,12 @@ let lang = {
     'label_remember_me': 'Remember me',
     'label_welcome': 'Welcome back!',
     'label_please_wait': 'Please wait...',
+    'label_ID': 'ID',
+    'label_name': 'Name',
+    'label_country': 'Country',
+    'label_phone': 'Phone',
+    'label_date': 'Date',
+    'label_total': 'Total',
     'label_message_back_to_login': 'Back to log in page',
     'label_message_404': 'The page you are looking for doesn\'t exists',
     // Buttons

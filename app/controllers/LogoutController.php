@@ -29,6 +29,9 @@ class LogoutController extends Controller
             clearCookie('hash');
         }
 
+        // Destroy session
+        session_destroy();
+
         // Redirect to log in page
         redirect('login');
     }

@@ -40,6 +40,24 @@ if (!function_exists('saveLog')) {
 }
 
 
+if (!function_exists('validateDate')) {
+    /**
+     * Validate date
+     *
+     * @param string $date
+     * @param string $format
+     *
+     * @return bool
+     */
+    function validateDate($date, $format = 'Y-m-d') {
+        // Create from format
+        $d = DateTime::createFromFormat($format, $date);
+
+        return $d && $d->format($format) === $date;
+    }
+}
+
+
 
 if (!function_exists('redirect')) {
     /**

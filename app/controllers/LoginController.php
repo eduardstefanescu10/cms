@@ -52,6 +52,9 @@ class LoginController extends Controller
             if (!empty($json)) {
                 // Check if values exists
                 if (isset($json['username']) && isset($json['password']) && isset($json['remember'])) {
+                    // Destroy session
+                    session_destroy();
+
                     // Sanitize values
                     $username = sanitizeUsername($json['username']);
                     $password = cryptPass($json['password']);

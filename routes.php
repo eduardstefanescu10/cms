@@ -27,6 +27,10 @@ $router->get('/password/reset/:ID/:tempPass', 'ForgotController@resetPass');
 $router->get('/', 'DashboardController@index');
 
 
+// Orders
+$router->post('/api/orders/list', 'OrdersController@list');
+
+
 // Products CRUD
 $router->post('/api/products/product/create', 'ProductsController@create');
 $router->get('/api/products/product/read/:ID', 'ProductsController@read');
