@@ -27,6 +27,10 @@ $router->get('/password/reset/:ID/:tempPass', 'ForgotController@resetPass');
 $router->get('/', 'DashboardController@index');
 
 
+// Traffic
+$router->post('/api/statistics/traffic/views/days', 'TrafficController@getDaysViews');
+
+
 // Orders
 $router->post('/api/orders/list', 'OrdersController@list');
 

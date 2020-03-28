@@ -34,6 +34,7 @@ let lang = {
     'label_phone': 'Phone',
     'label_date': 'Date',
     'label_total': 'Total',
+    'label_views': 'Views',
     'label_message_back_to_login': 'Back to log in page',
     'label_message_404': 'The page you are looking for doesn\'t exists',
     // Buttons
@@ -45,5 +46,6 @@ let lang = {
     'error_internal_server': 'Something went wrong, please try again',
     'error_login': 'Wrong username or password',
     'error_forgot_empty': 'Please enter your email',
-    'error_forgot_wrong': 'That email doesn\'t exists'
+    'error_forgot_wrong': 'That email doesn\'t exists',
+    'error_traffic_bad': 'The traffic chart could not be displayed'
 }

@@ -4,11 +4,44 @@ $('h1').text(lang['title_dashboard']);
 $('#label_traffic').html('<i class="fas fa-chart-line"></i>&nbsp;' + lang['label_traffic']);
 $('#label_devices').html('<i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;' + lang['label_devices']);
 $('#label_new_orders').html('<i class="fas fa-dollar-sign"></i>&nbsp;' + lang['label_new_orders']);
+$('#traffic_statistics').html('<div class="spinner-box"><i class="fas fa-spinner fa-spin"></i></div>');
 $('#orders_list').html('<div class="spinner-box"><i class="fas fa-spinner fa-spin"></i></div>');
 
 
-// Get orders
+// After the page is loaded
 $(document).ready(function() {
+    // Get traffic days views
+    $.ajax({
+        type: 'POST',
+        url: TRAFFIC_DAYS_URL,
+        data: JSON.stringify(
+            {
+                "days": 7
+            }
+        ),
+        contentType: 'application/json',
+        timeout: TIMEOUT,
+        statusCode: {
+            200: function (json) {
+                // OK
+                // Remove spinner
+                $('#traffic_statistics').html('');
+
+                // Create traffic chart
+                createTrafficChart(json);
+            },
+            400: function () {
+                // Bad request
+                $('#traffic_statistics').html(lang['error_traffic_bad']);
+            },
+            401: function () {
+                // Unauthorized
+                redirect('logout');
+            }
+        }
+    });
+
+    // Get orders
     $.ajax({
         type: 'POST',
         url: ORDERS_URL,
@@ -92,3 +125,56 @@ $(document).ready(function() {
         }
     });
 });
+
+
+// Traffic chart
+function createTrafficChart(values) {
+    // Traffic chart
+    new Morris.Line({
+        // Where we draw
+        element: 'traffic_statistics',
+        // The data chart
+        data: [
+            {
+                day: convertDateBE(getDate(6), 1),
+                value: values[getDate(6)]
+            },
+            {
+                day: convertDateBE(getDate(5), 1),
+                value: values[getDate(5)]
+            },
+            {
+                day: convertDateBE(getDate(4), 1),
+                value: values[getDate(4)]
+            },
+            {
+                day: convertDateBE(getDate(3), 1),
+                value: values[getDate(3)]
+            },
+            {
+                day: convertDateBE(getDate(2), 1),
+                value: values[getDate(2)]
+            },
+            {
+                day: convertDateBE(getDate(1), 1),
+                value: values[getDate(1)]
+            },
+            {
+                day: convertDateBE(getDate(), 1),
+                value: values[getDate()]
+            }
+        ],
+        // Define xkey
+        xkey: 'day',
+        // Define ykeys
+        ykeys: ['value'],
+        // Define labels
+        labels: [lang['label_views']],
+        // Define line colors
+        lineColors: ['#ce00ce'],
+        // Resize
+        resize: true,
+        // Disable time display
+        parseTime: false
+    });
+}
