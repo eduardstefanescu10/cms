@@ -6,6 +6,8 @@ $('#label_devices').html('<i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;' + lang[
 $('#label_new_orders').html('<i class="fas fa-dollar-sign"></i>&nbsp;' + lang['label_new_orders']);
 $('#traffic_statistics').html('<div class="spinner-box"><i class="fas fa-spinner fa-spin"></i></div>');
 $('#orders_list').html('<div class="spinner-box"><i class="fas fa-spinner fa-spin"></i></div>');
+$('#devices_statistics').html('<div class="spinner-box"><i class="fas fa-spinner fa-spin"></i></div>');
+
 
 
 // After the page is loaded
@@ -33,6 +35,38 @@ $(document).ready(function() {
             400: function () {
                 // Bad request
                 $('#traffic_statistics').html(lang['error_traffic_bad']);
+            },
+            401: function () {
+                // Unauthorized
+                redirect('logout');
+            }
+        }
+    });
+
+    // Get devices views
+    $.ajax({
+        type: 'POST',
+        url: TRAFFIC_DEVICES_URL,
+        data: JSON.stringify(
+            {
+                "startDate": getDate(6),
+                "endDate": getDate()
+            }
+        ),
+        contentType: 'application/json',
+        timeout: TIMEOUT,
+        statusCode: {
+            200: function (json) {
+                // OK
+                // Remove spinner
+                $('#devices_statistics').html('');
+
+                // Create devices chart
+                getDevicesChart(json.mobile, json.web);
+            },
+            400: function () {
+                // Bad request
+                $('#devices_statistics').html(lang['error_traffic_bad']);
             },
             401: function () {
                 // Unauthorized
@@ -176,5 +210,30 @@ function createTrafficChart(values) {
         resize: true,
         // Disable time display
         parseTime: false
+    });
+}
+
+
+// Devices chart
+function getDevicesChart(mobileViews, webViews) {
+    // Donut
+    Morris.Donut({
+        // Where we draw
+        element: 'devices_statistics',
+        // The data chart
+        data: [
+            {
+                label: lang['label_web'],
+                value: webViews
+            },
+            {
+                label: lang['label_mobile'],
+                value: mobileViews
+            }
+        ],
+        // The colors
+        colors: ['#4699df', '#b900b9'],
+        // Resize
+        resize: true,
     });
 }

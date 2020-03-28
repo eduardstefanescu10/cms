@@ -1,12 +1,13 @@
 // Constants
-const BASE_URL         = 'http://localhost/cms';
-const API_URL          = BASE_URL + '/api';
-const LOGIN_URL        = API_URL + '/account/login';
-const FORGOT_URL       = API_URL + '/account/forgot'
-const ORDERS_URL       = API_URL + '/orders/list'
-const TRAFFIC_DAYS_URL = API_URL + '/statistics/traffic/views/days';
-const TIMEOUT          = 30000; // 30 seconds
-const CURRENCY_ICON    = '<i class="fas fa-dollar-sign"></i>';
+const BASE_URL            = 'http://localhost/cms';
+const API_URL             = BASE_URL + '/api';
+const LOGIN_URL           = API_URL + '/account/login';
+const FORGOT_URL          = API_URL + '/account/forgot'
+const ORDERS_URL          = API_URL + '/orders/list'
+const TRAFFIC_DAYS_URL    = API_URL + '/statistics/traffic/views/days';
+const TRAFFIC_DEVICES_URL = API_URL + '/statistics/traffic/views/devices';
+const TIMEOUT             = 30000; // 30 seconds
+const CURRENCY_ICON       = '<i class="fas fa-dollar-sign"></i>';
 
 // Show/hide sidebar
 $('#menu-toggle').click(function(e) {

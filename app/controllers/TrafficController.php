@@ -96,4 +96,76 @@ class TrafficController extends Controller
             return;
         }
     }
+
+    /**
+     * Get devices views for a certain date period
+     */
+    public function getDevicesViews()
+    {
+        // Check if logged
+        if (!Auth::checkLogin()) {
+            // Unauthorized
+            $this->setContent(401);
+            return;
+        }
+
+        // Check if POST request
+        if (!isset($_POST)) {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Get json
+        $json = json_decode(file_get_contents("php://input"), true);
+
+        // Check if JSON is empty
+        if (empty($json)) {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Check if start date is set
+        if (isset($json['startDate'])) {
+            // Check if startDate is date
+            if (!validateDate($json['startDate'])) {
+                // Bad request
+                $this->setContent(400);
+                return;
+            }
+        } else {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Check if start date is set
+        if (isset($json['endDate'])) {
+            // Check if end date is date
+            if (!validateDate($json['endDate'])) {
+                // Bad request
+                $this->setContent(400);
+                return;
+            }
+        } else {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Get web views
+        $resultWeb = $this->model->getDevicesViews('web', $json['startDate'], $json['endDate']);
+
+        // Get mobile views
+        $resultMobile = $this->model->getDevicesViews('mobile', $json['startDate'], $json['endDate']);
+
+        // OK
+        $this->setContent(200,
+            array(
+                'web' => $resultWeb,
+                'mobile' => $resultMobile
+            )
+        );
+    }
 }

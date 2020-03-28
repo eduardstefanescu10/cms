@@ -35,6 +35,8 @@ let lang = {
     'label_date': 'Date',
     'label_total': 'Total',
     'label_views': 'Views',
+    'label_web': 'Web',
+    'label_mobile': 'Mobile',
     'label_message_back_to_login': 'Back to log in page',
     'label_message_404': 'The page you are looking for doesn\'t exists',
     // Buttons

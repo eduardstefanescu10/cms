@@ -34,6 +34,44 @@ class TrafficModel extends Model
             return 0;
         }
     }
+
+    /**
+     * Get the devices views for a specific date
+     *
+     * @param string $device
+     * @param string $startDate
+     * @param string $endDate
+     *
+     * @return int
+     */
+    public function getDevicesViews(string $device, string $startDate, string $endDate)
+    {
+        $sql = "
+            SELECT ID FROM cms_traffic WHERE 
+            device=:device AND 
+            DATE(added)>=:startDate AND 
+            DATE(added)<=:endDate
+        ";
+        $result = $this->get(
+            $sql,
+            [
+                'device'    => $device,
+                'startDate' => $startDate,
+                'endDate'   => $endDate
+            ]
+        );
+
+        // Check result
+        if ($result !== null) {
+            // Return results
+            return count($result);
+        } else {
+            // Failed
+            // Save log
+            saveLog('TrafficModel failed on method getDevicesViews for the sql: ' . $sql);
+            return 0;
+        }
+    }
 }
 
 

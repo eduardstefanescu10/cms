@@ -29,6 +29,7 @@ $router->get('/', 'DashboardController@index');
 
 // Traffic
 $router->post('/api/statistics/traffic/views/days', 'TrafficController@getDaysViews');
+$router->post('/api/statistics/traffic/views/devices', 'TrafficController@getDevicesViews');
 
 
 // Orders
