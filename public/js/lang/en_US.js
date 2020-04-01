@@ -21,6 +21,8 @@ let lang = {
     'label_mobile': 'Mobile',
     'label_web': 'Web',
     'label_new_orders': 'New orders',
+    'label_first_name': 'First name',
+    'label_last_name': 'Last name',
     'label_username': 'Username',
     'label_password': 'Password',
     'label_email': 'Email',
@@ -42,12 +44,29 @@ let lang = {
     // Buttons
     'button_login': 'Log in',
     'button_recover': 'Recover',
+    'button_update': 'Update',
     // Success
     'success_forgot': 'Please check your inbox and follow the instructions',
+    'success_admin_update_details': 'Details updated successfully',
     // Errors
     'error_internal_server': 'Something went wrong, please try again',
     'error_login': 'Wrong username or password',
     'error_forgot_empty': 'Please enter your email',
     'error_forgot_wrong': 'That email doesn\'t exists',
-    'error_traffic_bad': 'The traffic chart could not be displayed'
+    'error_traffic_bad': 'The traffic chart could not be displayed',
+    'error_account_details_get_failed': 'Couldn\'t get the account details, please refresh the page',
+    'error_account_details_update_failed': 'Couldn\'t update the details, please try again',
+    'error_first_name_empty': 'Please enter your first name',
+    'error_first_name_length': 'The first name must have minimum 1 and maximum 50 chars',
+    'error_first_name_invalid': 'The first name can contain only letters and whitespaces',
+    'error_last_name_empty': 'Please enter your last name',
+    'error_last_name_length': 'The last name must have minimum 1 and maximum 50 chars',
+    'error_last_name_invalid': 'The last name can contain only letters and whitespaces',
+    'error_email_empty': 'Please enter your email',
+    'error_email_invalid': 'Please enter valid email',
+    'error_email_taken': 'That email is already taken, try another one',
+    'error_username_empty': 'Please enter your username',
+    'error_username_length': 'The username can have minimum 1 and maximum 20 chars',
+    'error_username_invalid': 'The username can contain letters and digits only',
+    'error_username_taken': 'That username is taken, please try another one'
 }

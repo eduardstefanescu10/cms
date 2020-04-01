@@ -5,7 +5,7 @@ $('#button_recover').html('<i class="fas fa-check"></i>&nbsp;&nbsp;' + lang['but
 $('#label_message_back_to_login').text(lang['label_message_back_to_login']);
 
 
-// Log in request
+// Forgot request
 $('#forgot_form').submit(function(event) {
     // Prevent default action
     event.preventDefault();

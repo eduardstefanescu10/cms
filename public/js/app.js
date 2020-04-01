@@ -3,6 +3,8 @@ const BASE_URL            = 'http://localhost/cms';
 const API_URL             = BASE_URL + '/api';
 const LOGIN_URL           = API_URL + '/account/login';
 const FORGOT_URL          = API_URL + '/account/forgot'
+const ADMIN_DETAILS_GET_URL   = API_URL + '/account/details/get';
+const ADMIN_UPDATE_DETAILS_URL = API_URL + '/account/details/update';
 const ORDERS_URL          = API_URL + '/orders/list'
 const TRAFFIC_DAYS_URL    = API_URL + '/statistics/traffic/views/days';
 const TRAFFIC_DEVICES_URL = API_URL + '/statistics/traffic/views/devices';
@@ -91,4 +93,33 @@ function convertDateBE(dateTime, type = 0) {
         // Example: February 16
         return months[parseInt(split2[1]) - 1] + ' ' + split2[2];
     }
+}
+
+
+// Hide message
+function hideMessage() {
+    // Add hidden class
+    $('#error_box').addClass('hidden');
+}
+
+
+// Show message
+function showMessage(type, message) {
+    // Check type
+    if (type == 'success') {
+        // Success
+        $('#error_box').addClass('alert alert-success alert-dismissible fade show');
+    } else if (type =='warning') {
+        // Warning
+        $('#error_box').addClass('alert alert-warning alert-dismissible fade show');
+    } else {
+        // Failed
+        $('#error_box').addClass('alert alert-danger alert-dismissible fade show');
+    }
+
+    // Show message
+    $('#error_message').text(message);
+
+    // Remove hidden class
+    $('#error_box').removeClass('hidden');
 }

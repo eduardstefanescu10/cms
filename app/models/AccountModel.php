@@ -267,4 +267,145 @@ class AccountModel extends Model
             return false;
         }
     }
+
+    /**
+     * Get admin's details
+     *
+     * @param int $ID
+     *
+     * @return array|null
+     */
+    public function getDetails(int $ID)
+    {
+        $sql = "SELECT firstName, lastName, username, email FROM cms_admins WHERE ID=:ID LIMIT 1";
+        $result = $this->get(
+            $sql,
+            [
+                'ID' => $ID
+            ]
+        );
+
+        // Check result
+        if ($result !== null) {
+            // Check count
+            if (count($result) == 1) {
+                // Return admin's details
+                return $result[0];
+            } else {
+                // Not found
+                return null;
+            }
+        } else {
+            // Save log
+            saveLog('AccountModel class failed for method getDetails with the sql: ' .  $sql);
+
+            // Failed
+            return null;
+        }
+    }
+
+    /**
+     * Update admin's details
+     *
+     * @param array $request
+     *
+     * @return bool
+     */
+    public function updateDetails($request = array()) {
+        $query = $this->update(
+            'cms_admins',
+            [
+                'firstName' => $request['firstName'],
+                'lastName'  => $request['lastName'],
+                'email'     => $request['email'],
+                'username'  => $request['username']
+            ],
+            [
+                'ID' => $request['ID']
+            ],
+            'LIMIT 1'
+        );
+
+        // Check results
+        if ($query !== null) {
+            // Success
+            return true;
+        } else {
+            // Failed
+            // Save log
+            saveLog('AccountModel class failed for method updateDetails using the values: ' . json_encode($request));
+
+            return false;
+        }
+    }
+
+    /**
+     * Check if email is taken
+     *
+     * @param int $ID
+     * @param string $email
+     *
+     * @return bool
+     */
+    public function checkEmail(int $ID, string $email)
+    {
+        $sql = "SELECT ID FROM cms_admins WHERE ID<>:ID AND email=:email LIMIT 1";
+        $result = $this->get(
+            $sql,
+            [
+                'ID'    => $ID,
+                'email' => $email
+            ]
+        );
+
+        // Check result
+        if ($result !== null) {
+            // Check count
+            if (count($result) == 1) {
+                // Taken
+                return false;
+            } else {
+                // Not taken
+                return true;
+            }
+        } else {
+            // Failed
+            return false;
+        }
+    }
+
+    /**
+     * Check if username is taken
+     *
+     * @param int $ID
+     * @param string $username
+     *
+     * @return bool
+     */
+    public function checkUsername(int $ID, string $username)
+    {
+        $sql = "SELECT ID FROM cms_admins WHERE ID<>:ID AND username=:username LIMIT 1";
+        $result = $this->get(
+            $sql,
+            [
+                'ID'    => $ID,
+                'username' => $username
+            ]
+        );
+
+        // Check result
+        if ($result !== null) {
+            // Check count
+            if (count($result) == 1) {
+                // Taken
+                return false;
+            } else {
+                // Not taken
+                return true;
+            }
+        } else {
+            // Failed
+            return false;
+        }
+    }
 }

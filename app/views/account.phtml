@@ -1,0 +1,82 @@
+<?php
+
+
+// Get header template
+include_once 'tmp/logged/header.phtml';
+
+
+// Get sidebar template
+include_once 'tmp/logged/sidebar.phtml';
+
+
+?>
+<div class="content-wrapper">
+    <!-- Start alert -->
+    <div id="error_box" class="hidden" role="alert">
+        <span id="error_message"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- End alert -->
+    <h1></h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <form id="account_settings" method="POST">
+                <div class="info-box">
+                    <div class="info-header" id="label_account"></div>
+                    <div class="info-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label id="first_name_label"></label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" autocomplete="off" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label id="last_name_label"></label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" autocomplete="off" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label id="username_label"></label>
+                                    <input type="text" class="form-control" id="username" name="username" autocomplete="off" maxlength="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label id="email_label"></label>
+                                    <input type="email" class="form-control" id="email" name="email" autocomplete="off" maxlength="255">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary update-btn" id="button_update"></button>
+            </form>
+        </div>
+    </div>
+</div>
+<?php
+
+
+// Get footer links template
+include_once 'tmp/logged/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/account.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get footer template
+include_once 'tmp/logged/footer.phtml';
+
+
+?>

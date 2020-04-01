@@ -22,6 +22,9 @@
     position: absolute;
     margin-right: -250px;
 }
+.hidden {
+    display: none;
+}
 
 
 /* Spinner box */

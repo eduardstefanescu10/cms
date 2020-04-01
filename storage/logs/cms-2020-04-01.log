@@ -1,0 +1,7 @@
+[2020-04-01 12:21:18] AccountModel class failed for method updateDetails using the values: Array
+[2020-04-01 12:28:35] AccountModel class failed for method updateDetails using the values: {"firstName":"Eduard","lastName":"Stefanescu","email":"eduard@proeminentcode.com","username":"Admin","ID":1}
+[2020-04-01 12:34:20] Model class update method returned no rows for the sql: UPDATE cms_admins SET firstName=:firstName,lastName=:lastName,email=:email,username=:username WHERE ID=:ID  LIMIT 1
+[2020-04-01 12:34:20] AccountModel class failed for method updateDetails using the values: {"firstName":"Eduard","lastName":"Stefanescu","email":"eduard@proeminentcode.com","username":"Admin","ID":1}
+[2020-04-01 12:43:20] Model class update method returned no rows for the sql: UPDATE cms_admins SET firstName=:firstName,lastName=:lastName,email=:email,username=:username WHERE ID=:ID  LIMIT 1
+[2020-04-01 12:43:20] AccountModel class failed for method updateDetails using the values: {"firstName":"Eduard","lastName":"Stefan","email":"eduard@proeminentcode.com","username":"Admin","ID":1}
+[2020-04-01 12:44:58] Model class update method returned no rows for the sql: UPDATE cms_admins SET firstName=:firstName,lastName=:lastName,email=:email,username=:username WHERE ID=:ID  LIMIT 1

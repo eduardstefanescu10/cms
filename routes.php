@@ -17,6 +17,11 @@ $router->post('/api/account/login', 'LoginController@login');
 $router->get('/logout', 'LogoutController@index');
 
 
+// Account
+$router->get('/account', 'AccountController@index');
+$router->get('/api/account/details/get', 'AccountController@getDetails');
+$router->post('/api/account/details/update', 'AccountController@updateDetails');
+
 // Forgot password
 $router->get('/forgot', 'ForgotController@index');
 $router->post('/api/account/forgot', 'ForgotController@forgot');

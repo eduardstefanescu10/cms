@@ -150,7 +150,7 @@ class Model
      * @param array $where
      * @param string $options
      *
-     * @return int
+     * @return int|null
      */
     protected function update(string $table, $params = array(), $where = array(), string $options = '')
     {
@@ -159,7 +159,7 @@ class Model
 
         // Check connection
         if ($this->dbc == null) {
-            return 0;
+            return null;
         }
 
         // Variables
@@ -199,10 +199,16 @@ class Model
             // Save log
             saveLog($stm->errorInfo() . " UPDATE $table SET $updateValues WHERE $whereValues $options");
 
-            return 0;
+            return null;
         } else {
             // Close connection
             $this->dbc = null;
+
+            // Check if result is 0
+            if ($stm->rowCount() == 0) {
+                // Save log
+                saveLog("Model class update method returned no rows for the sql: UPDATE $table SET $updateValues WHERE $whereValues $options");
+            }
 
             return $stm->rowCount();
         }

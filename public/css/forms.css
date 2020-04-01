@@ -18,6 +18,10 @@
     -o-transition: all 1.0s ease;
     transition: all 1.0s ease;
 }
+.update-btn {
+    padding: 7px 15px;
+    margin-top: -10px;
+}
 
 /* Inputs */
 .form-control {
