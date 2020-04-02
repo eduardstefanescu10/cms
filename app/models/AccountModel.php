@@ -408,4 +408,35 @@ class AccountModel extends Model
             return false;
         }
     }
+
+    /**
+     * Change admin's password
+     *
+     * @param int $ID
+     * @param string $newPass
+     *
+     * @return bool
+     */
+    public function changePass(int $ID, string $newPass)
+    {
+        $result = $this->update(
+            'cms_admins',
+            [
+                'password' => $newPass
+            ],
+            [
+                'ID' => $ID
+            ],
+            'LIMIT 1'
+        );
+
+        // Check the result
+        if ($result == 1) {
+            // Success
+            return true;
+        } else {
+            // Failed
+            return false;
+        }
+    }
 }

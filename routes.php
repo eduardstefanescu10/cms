@@ -21,6 +21,8 @@ $router->get('/logout', 'LogoutController@index');
 $router->get('/account', 'AccountController@index');
 $router->get('/api/account/details/get', 'AccountController@getDetails');
 $router->post('/api/account/details/update', 'AccountController@updateDetails');
+$router->post('/api/account/password', 'PasswordController@changePass');
+
 
 // Forgot password
 $router->get('/forgot', 'ForgotController@index');
@@ -30,6 +32,10 @@ $router->get('/password/reset/:ID/:tempPass', 'ForgotController@resetPass');
 
 // Dashboard
 $router->get('/', 'DashboardController@index');
+
+
+// Change password
+$router->get('/password', 'PasswordController@index');
 
 
 // Traffic

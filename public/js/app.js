@@ -1,15 +1,16 @@
 // Constants
-const BASE_URL            = 'http://localhost/cms';
-const API_URL             = BASE_URL + '/api';
-const LOGIN_URL           = API_URL + '/account/login';
-const FORGOT_URL          = API_URL + '/account/forgot'
-const ADMIN_DETAILS_GET_URL   = API_URL + '/account/details/get';
+const BASE_URL                 = 'http://localhost/cms';
+const API_URL                  = BASE_URL + '/api';
+const LOGIN_URL                = API_URL + '/account/login';
+const FORGOT_URL               = API_URL + '/account/forgot'
+const ADMIN_DETAILS_GET_URL    = API_URL + '/account/details/get';
 const ADMIN_UPDATE_DETAILS_URL = API_URL + '/account/details/update';
-const ORDERS_URL          = API_URL + '/orders/list'
-const TRAFFIC_DAYS_URL    = API_URL + '/statistics/traffic/views/days';
-const TRAFFIC_DEVICES_URL = API_URL + '/statistics/traffic/views/devices';
-const TIMEOUT             = 30000; // 30 seconds
-const CURRENCY_ICON       = '<i class="fas fa-dollar-sign"></i>';
+const ADMIN_CHANGE_PASS_URL    = API_URL + '/account/password';
+const ORDERS_URL               = API_URL + '/orders/list'
+const TRAFFIC_DAYS_URL         = API_URL + '/statistics/traffic/views/days';
+const TRAFFIC_DEVICES_URL      = API_URL + '/statistics/traffic/views/devices';
+const TIMEOUT                  = 30000; // 30 seconds
+const CURRENCY_ICON            = '<i class="fas fa-dollar-sign"></i>';
 
 // Show/hide sidebar
 $('#menu-toggle').click(function(e) {
@@ -98,6 +99,11 @@ function convertDateBE(dateTime, type = 0) {
 
 // Hide message
 function hideMessage() {
+    // Remove the other class
+    $('#error_box').removeClass('alert alert-success alert-dismissible fade show');
+    $('#error_box').removeClass('alert alert-warning alert-dismissible fade show');
+    $('#error_box').removeClass('alert alert-danger alert-dismissible fade show');
+
     // Add hidden class
     $('#error_box').addClass('hidden');
 }

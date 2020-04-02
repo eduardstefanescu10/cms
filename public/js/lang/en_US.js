@@ -13,6 +13,7 @@ let lang = {
     'title_logout': 'Log out',
     'title_login': 'Log in',
     'title_forgot_password': 'Recover password',
+    'title_change_password': 'Change password',
     // Labels
     'label_version': 'Version',
     'label_traffic': 'Traffic',
@@ -41,6 +42,9 @@ let lang = {
     'label_mobile': 'Mobile',
     'label_message_back_to_login': 'Back to log in page',
     'label_message_404': 'The page you are looking for doesn\'t exists',
+    'label_current_password': 'Current password',
+    'label_new_password': 'New password',
+    'label_confirm_password': 'Confirm password',
     // Buttons
     'button_login': 'Log in',
     'button_recover': 'Recover',
@@ -48,6 +52,7 @@ let lang = {
     // Success
     'success_forgot': 'Please check your inbox and follow the instructions',
     'success_admin_update_details': 'Details updated successfully',
+    'success_pass_changed': 'The new password has been changed, you will now need to log in again',
     // Errors
     'error_internal_server': 'Something went wrong, please try again',
     'error_login': 'Wrong username or password',
@@ -68,5 +73,16 @@ let lang = {
     'error_username_empty': 'Please enter your username',
     'error_username_length': 'The username can have minimum 1 and maximum 20 chars',
     'error_username_invalid': 'The username can contain letters and digits only',
-    'error_username_taken': 'That username is taken, please try another one'
+    'error_username_taken': 'That username is taken, please try another one',
+    'error_pass_current_empty': 'Please enter your current password',
+    'error_pass_new_empty': 'Please enter a new password',
+    'error_pass_confirm_empty': 'Please confirm the new password',
+    'error_pass_new_length_match': 'The new password must be different than the current one',
+    'error_pass_confirm_match': 'The new and confirm password must match',
+    'error_pass_current_invalid': 'The current password is not correct',
+    'error_pass_new_length_min': 'The new password must have at least 8 chars',
+    'error_pass_new_length_max': 'The new password cannot have more than 50 chars',
+    'error_pass_new_match': 'The new password must be different than the current one',
+    'error_pass_new_invalid': 'The new password must have at least one digit, one letter and one special char',
+    'error_pass_changed': 'The password could not be changed, please try again'
 }

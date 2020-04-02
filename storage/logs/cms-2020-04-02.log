@@ -1,0 +1,1 @@
+[2020-04-02 09:11:59] Model class update method returned no rows for the sql: UPDATE cms_admins SET firstName=:firstName,lastName=:lastName,email=:email,username=:username WHERE ID=:ID  LIMIT 1

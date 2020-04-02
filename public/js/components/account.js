@@ -7,6 +7,7 @@ $('#last_name_label').html(lang['label_last_name']);
 $('#username_label').html(lang['label_username']);
 $('#email_label').html(lang['label_email']);
 $('#button_update').html('<i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;' + lang['label_please_wait']);
+$('#title_change_password').text(lang['title_change_password']);
 
 
 // Disable fields and button
@@ -126,34 +127,24 @@ $('#account_settings').submit(function(event) {
         statusCode: {
             200: function (json) {
                 // OK
-                // Check if ok
+                // Check if success
                 if (json.status == 'success') {
                     // Show message
                     showMessage('success', lang['success_admin_update_details'])
-
-                    // Enable fields and button
-                    $('#firstName').attr('disabled', false);
-                    $('#lastName').attr('disabled', false);
-                    $('#username').attr('disabled', false);
-                    $('#email').attr('disabled', false);
-                    $('#button_update').attr('disabled', false);
-
-                    // Remove spinner
-                    $('#button_update').html('<i class="fas fa-check"></i>&nbsp;&nbsp;' + lang['button_update']);
                 } else {
                     // Show message
-                    showMessage('warning', lang['error_' + json.status])
-
-                    // Enable fields and button
-                    $('#firstName').attr('disabled', false);
-                    $('#lastName').attr('disabled', false);
-                    $('#username').attr('disabled', false);
-                    $('#email').attr('disabled', false);
-                    $('#button_update').attr('disabled', false);
-
-                    // Remove spinner
-                    $('#button_update').html('<i class="fas fa-check"></i>&nbsp;&nbsp;' + lang['button_update']);
+                    showMessage('warning', lang['error_' + json.status]);
                 }
+
+                // Enable fields and button
+                $('#firstName').attr('disabled', false);
+                $('#lastName').attr('disabled', false);
+                $('#username').attr('disabled', false);
+                $('#email').attr('disabled', false);
+                $('#button_update').attr('disabled', false);
+
+                // Remove spinner
+                $('#button_update').html('<i class="fas fa-check"></i>&nbsp;&nbsp;' + lang['button_update']);
             },
             400: function () {
                 // Show message
@@ -176,7 +167,7 @@ $('#account_settings').submit(function(event) {
             500: function () {
                 // Internal Server Error
                 // Show message
-                showMessage('error', lang['error_account_details_update_failed'])
+                showMessage('error', lang['error_account_details_update_failed']);
 
                 // Enable fields and button
                 $('#firstName').attr('disabled', false);
