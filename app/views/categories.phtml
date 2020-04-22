@@ -1,0 +1,60 @@
+<?php
+
+
+// Get header template
+include_once 'tmp/logged/header.phtml';
+
+
+// Get sidebar template
+include_once 'tmp/logged/sidebar.phtml';
+
+
+?>
+<div class="content-wrapper">
+    <!-- Start alert -->
+    <div id="error_box" class="hidden" role="alert">
+        <span id="error_message"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- End alert -->
+    <h1></h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="info-box">
+                <div class="info-header" id="label_categories"></div>
+                <div class="info-body">
+                    <div>
+                        <form method="POST" id="categories_form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="searchText" name="searchText" autocomplete="off" maxlength="50">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    <div id="categories_table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+
+
+// Get footer links template
+include_once 'tmp/logged/links.phtml';
+
+
+?>
+<script src="<?php echo OPTIONS['URL']; ?>/public/js/components/categories.js<?php echo CACHE; ?>"></script>
+<?php
+
+
+// Get footer template
+include_once 'tmp/logged/footer.phtml';
+
+
+?>

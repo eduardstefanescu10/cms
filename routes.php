@@ -43,6 +43,11 @@ $router->post('/api/statistics/traffic/views/days', 'TrafficController@getDaysVi
 $router->post('/api/statistics/traffic/views/devices', 'TrafficController@getDevicesViews');
 
 
+// Categories
+$router->get('/categories', 'CategoriesController@index');
+$router->post('/api/categories/list', 'CategoriesController@list');
+
+
 // Orders
 $router->post('/api/orders/list', 'OrdersController@list');
 

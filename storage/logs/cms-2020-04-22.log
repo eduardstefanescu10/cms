@@ -1,0 +1,59 @@
+[2020-04-22 06:03:39] ------------------------
+[2020-04-22 06:03:39] 
+            SELECT ID 
+            FROM cms_admins 
+            WHERE 
+                ID=:ID 
+                AND username=:username 
+                AND password=:password 
+                AND sessionHash=:sessionHash 
+                AND status='1' 
+                LIMIT 1
+        
+[2020-04-22 06:03:39] {"ID":1,"username":"Admin","password":"b4a94b076037c1ec8c6a42007bcbb30c","sessionHash":"2d5433b3923b3c1a1a0568880f75cdb818d3f1b5"}
+[2020-04-22 06:03:42] ------------------------
+[2020-04-22 06:03:42] 
+            SELECT ID 
+            FROM cms_admins 
+            WHERE 
+                ID=:ID 
+                AND username=:username 
+                AND password=:password 
+                AND sessionHash=:sessionHash 
+                AND status='1' 
+                LIMIT 1
+        
+[2020-04-22 06:03:42] {"ID":1,"username":"Admin","password":"b4a94b076037c1ec8c6a42007bcbb30c","sessionHash":"2d5433b3923b3c1a1a0568880f75cdb818d3f1b5"}
+[2020-04-22 06:03:42] ------------------------
+[2020-04-22 06:03:42] 
+                SELECT * 
+                FROM cms_products_categories 
+                WHERE status IN(:draft, :available, :trash)
+                
+                ORDER BY added DESC 
+             LIMIT 10
+[2020-04-22 06:03:42] {"draft":"0","available":"1","trash":"2"}
+[2020-04-22 06:03:47] ------------------------
+[2020-04-22 06:03:47] 
+            SELECT ID 
+            FROM cms_admins 
+            WHERE 
+                ID=:ID 
+                AND username=:username 
+                AND password=:password 
+                AND sessionHash=:sessionHash 
+                AND status='1' 
+                LIMIT 1
+        
+[2020-04-22 06:03:47] {"ID":1,"username":"Admin","password":"b4a94b076037c1ec8c6a42007bcbb30c","sessionHash":"2d5433b3923b3c1a1a0568880f75cdb818d3f1b5"}
+[2020-04-22 06:03:47] The sql values: "Sh"
+[2020-04-22 06:03:47] ------------------------
+[2020-04-22 06:03:47] 
+                SELECT * 
+                FROM cms_products_categories
+                WHERE status IN(:draft, :available, :trash) 
+                AND title LIKE '%:searchText%'
+                 
+                ORDER BY added DESC
+             LIMIT 10
+[2020-04-22 06:03:47] {"draft":"0","available":"1","trash":"2","searchText":"Sh"}

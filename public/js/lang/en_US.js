@@ -45,6 +45,11 @@ let lang = {
     'label_current_password': 'Current password',
     'label_new_password': 'New password',
     'label_confirm_password': 'Confirm password',
+    'label_categories_placeholder': 'Search category name...',
+    'label_status': 'Status',
+    'label_status_available': 'Available',
+    'label_status_draft': 'Draft',
+    'label_status_trash': 'Trash',
     // Buttons
     'button_login': 'Log in',
     'button_recover': 'Recover',
@@ -53,6 +58,7 @@ let lang = {
     'success_forgot': 'Please check your inbox and follow the instructions',
     'success_admin_update_details': 'Details updated successfully',
     'success_pass_changed': 'The new password has been changed, you will now need to log in again',
+    'success_categories_list_none': 'No categories found',
     // Errors
     'error_internal_server': 'Something went wrong, please try again',
     'error_login': 'Wrong username or password',

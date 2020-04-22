@@ -23,6 +23,7 @@ class OrdersModel extends Model
 
         // Loop status
         foreach ($request['status'] as $value) {
+            // TO DO status of the order with 0,1 and 2
             $statusList .= $value . ',';
         }
 

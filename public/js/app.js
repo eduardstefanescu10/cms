@@ -9,6 +9,7 @@ const ADMIN_CHANGE_PASS_URL    = API_URL + '/account/password';
 const ORDERS_URL               = API_URL + '/orders/list'
 const TRAFFIC_DAYS_URL         = API_URL + '/statistics/traffic/views/days';
 const TRAFFIC_DEVICES_URL      = API_URL + '/statistics/traffic/views/devices';
+const CATEGORIES_LIST_URL      = API_URL + '/categories/list';
 const TIMEOUT                  = 30000; // 30 seconds
 const CURRENCY_ICON            = '<i class="fas fa-dollar-sign"></i>';
 
@@ -128,4 +129,23 @@ function showMessage(type, message) {
 
     // Remove hidden class
     $('#error_box').removeClass('hidden');
+}
+
+
+// Convert status BE
+function convertStatusBE(status) {
+    // Check status
+    switch (status) {
+        case '0':
+            // Draft
+            return lang['label_status_draft'];
+        case '1':
+            // Available
+            return lang['label_status_available'];
+        case '2':
+            // Trash
+            return lang['label_status_trash'];
+        default:
+            return;
+    }
 }

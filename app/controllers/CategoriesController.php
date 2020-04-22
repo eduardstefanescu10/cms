@@ -2,16 +2,16 @@
 
 
 namespace App\Controllers;
-use App\Models\OrdersModel;
+use App\Models\CategoriesModel;
 use CMS\Auth\Auth;
 
 
-class OrdersController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * The model
      *
-     * @var \App\Models\OrdersModel
+     * @var \App\Models\CategoriesModel
      */
     private $model;
 
@@ -20,7 +20,22 @@ class OrdersController extends Controller
      */
     public function __construct()
     {
-        $this->model = new OrdersModel();
+        $this->model = new CategoriesModel();
+    }
+
+    /**
+     * Default action
+     */
+    public function index()
+    {
+        // Check if logged
+        if (Auth::checkLogin()) {
+            // Get view
+            view('categories');
+        } else {
+            // Redirect to logout page
+            redirect('logout');
+        }
     }
 
     /**
@@ -59,14 +74,19 @@ class OrdersController extends Controller
         if (isset($json['searchText'])) {
             // Check if length is less than 61 chars
             if (strlen($json['searchText']) < 61) {
-                // Add to values array
-                $values['searchText'] = filter_var(
-                    $json['searchText'],
-                    FILTER_SANITIZE_STRING,
-                    array(
-                        'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_ENCODE_HIGH
-                    )
-                );
+                // Check if empty
+                if (empty($json['searchText'])) {
+                    $json['searchText'] = null;
+                } else {
+                    // Add to values array
+                    $values['searchText'] = filter_var(
+                        $json['searchText'],
+                        FILTER_SANITIZE_STRING,
+                        array(
+                            'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_ENCODE_HIGH
+                        )
+                    );
+                }
             } else {
                 // Bad request
                 $this->setContent(400);
@@ -131,18 +151,33 @@ class OrdersController extends Controller
             if (is_array($json['status'])) {
                 // Check if has at least one item and max 3
                 if (count($json['status']) > 0 && count($json['status']) < 4) {
+                    $statusList = '';
+
                     // Loop array
                     foreach ($json['status'] as $status) {
-                        // Check if not valid status
-                        if ($status != 'PENDING' && $status != 'COMPLETED' && $status != 'REJECTED') {
-                            // Bad request
-                            $this->setContent(400);
-                            return;
+                        // Check value
+                        switch ($status)
+                        {
+                            case 'DRAFT':
+                                $statusList .= '0,';
+                                break;
+                            case 'AVAILABLE':
+                                $statusList .= '1,';
+                                break;
+                            case 'TRASH':
+                                $statusList .= '2,';
+                                break;
+                            default:
+                                $this->setContent(400);
+                                return;
                         }
                     }
 
+                    // Trim last comma
+                    $statusList = rtrim($statusList, ',');
+
                     // Add to values array
-                    $values['status'] = $json['status'];
+                    $values['status'] = $statusList;
                 } else {
                     // Bad request
                     $this->setContent(400);
@@ -170,9 +205,8 @@ class OrdersController extends Controller
                 return;
             }
         } else {
-            // Bad request
-            $this->setContent(400);
-            return;
+            // Add to values array
+            $values['startDate'] = null;
         }
 
         // Check endDate
@@ -186,9 +220,8 @@ class OrdersController extends Controller
                 return;
             }
         } else {
-            // Bad request
-            $this->setContent(400);
-            return;
+            // Add to values array
+            $values['endDate'] = null;
         }
 
         $result = $this->model->list($values);
@@ -196,7 +229,7 @@ class OrdersController extends Controller
         // Check result
         if ($result !== null) {
             // OK
-            $this->setContent(200, array('orders' => $result));
+            $this->setContent(200, array('categories' => $result));
             return;
         } else {
             // Internal Server Error
