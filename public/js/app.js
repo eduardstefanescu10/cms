@@ -10,6 +10,7 @@ const ORDERS_URL               = API_URL + '/orders/list'
 const TRAFFIC_DAYS_URL         = API_URL + '/statistics/traffic/views/days';
 const TRAFFIC_DEVICES_URL      = API_URL + '/statistics/traffic/views/devices';
 const CATEGORIES_LIST_URL      = API_URL + '/categories/list';
+const CATEGORIES_CREATE_URL    = API_URL + '/categories/create';
 const TIMEOUT                  = 30000; // 30 seconds
 const CURRENCY_ICON            = '<i class="fas fa-dollar-sign"></i>';
 

@@ -38,6 +38,18 @@ class CategoriesController extends Controller
         }
     }
 
+    public function newCategory()
+    {
+        // Check if logged
+        if (Auth::checkLogin()) {
+            // Get view
+            view('categories.new');
+        } else {
+            // Redirect to logout page
+            redirect('logout');
+        }
+    }
+
     /**
      * Get orders from the database based on search criteria
      */
@@ -230,6 +242,98 @@ class CategoriesController extends Controller
         if ($result !== null) {
             // OK
             $this->setContent(200, array('categories' => $result));
+            return;
+        } else {
+            // Internal Server Error
+            $this->setContent(500);
+            return;
+        }
+    }
+
+    /**
+     * Create new category
+     */
+    public function create()
+    {
+        // Array to store values
+        $values = [];
+
+        // Check if logged
+        if (!Auth::checkLogin()) {
+            // Unauthorized
+            $this->setContent(401);
+            return;
+        }
+
+        // Check if POST request
+        if (!isset($_POST)) {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Get json
+        $json = json_decode(file_get_contents("php://input"), true);
+
+        // Check if JSON is empty
+        if (empty($json)) {
+            // Bad request
+            $this->setContent(400);
+            return;
+        }
+
+        // Check if name is set
+        if (isset($json['name'])) {
+            // Trim
+            $name = trim($json['name'], ' ');
+
+            // Check max length
+            if (strlen($name) < 51) {
+                // Check minim length
+                if (strlen($name) > 0) {
+                    // Check if clean string
+                    if (ctype_alnum(str_replace(' ', '', $name))) {
+                        // Add value to array
+                        $values['name'] = $name;
+                    } else {
+                        $this->setContent(200, array('status' => 'name_chars'));
+                        return;
+                    }
+                } else {
+                    $this->setContent(200, array('status' => 'name_length_min'));
+                    return;
+                }
+            } else {
+                $this->setContent(200, array('status' => 'name_length_max'));
+                return;
+            }
+        } else {
+            $this->setContent(200, array('status' => 'name_missing'));
+            return;
+        }
+
+        // Check if status is set
+        if (isset($json['status'])) {
+            // Check if status is valid
+            if ($json['status'] == '0' || $json['status'] == '1' || $json['status'] == '2') {
+                // Add value to array
+                $values['status'] = $json['status'];
+            } else {
+                $this->setContent(200, array('status' => 'status_invalid'));
+                return;
+            }
+        } else {
+            $this->setContent(200, array('status' => 'status_missing'));
+            return;
+        }
+
+        // Create category
+        $result = $this->model->insert($values['name'], $values['status']);
+
+        // Check result
+        if ($result) {
+            // OK
+            $this->setContent(200, array('status' => 'success'));
             return;
         } else {
             // Internal Server Error

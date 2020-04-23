@@ -101,4 +101,33 @@ class CategoriesModel extends Model
             return null;
         }
     }
+
+    /**
+     * Create new category
+     *
+     * @param string $name
+     * @param string $status
+     *
+     * @return bool
+     */
+    public function insert(string $name, string $status)
+    {
+        $result = $this->create(
+            'cms_products_categories',
+            [
+                'title' => $name,
+                'status' => $status,
+                'added' => date('Y-m-d H:s')
+            ]
+        );
+
+        // Check result
+        if ($result > 0) {
+            // Success
+            return true;
+        } else {
+            // Fail
+            return false;
+        }
+    }
 }

@@ -45,8 +45,9 @@ $router->post('/api/statistics/traffic/views/devices', 'TrafficController@getDev
 
 // Categories
 $router->get('/categories', 'CategoriesController@index');
+$router->get('/categories/new', 'CategoriesController@newCategory');
 $router->post('/api/categories/list', 'CategoriesController@list');
-
+$router->post('/api/categories/create', 'CategoriesController@create');
 
 // Orders
 $router->post('/api/orders/list', 'OrdersController@list');

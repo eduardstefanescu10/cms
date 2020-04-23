@@ -6,6 +6,7 @@ let lang = {
     'title_dashboard': 'Dashboard',
     'title_settings': 'Settings',
     'title_categories': 'Categories',
+    'title_categories_new': 'New category',
     'title_products': 'Products',
     'title_orders': 'Orders',
     'title_pages': 'Pages',
@@ -50,10 +51,15 @@ let lang = {
     'label_status_available': 'Available',
     'label_status_draft': 'Draft',
     'label_status_trash': 'Trash',
+    'label_category_name': 'Category name',
+    'label_option_available': 'Available',
+    'label_option_draft': 'Draft',
+    'label_option_trash': 'Trash',
     // Buttons
     'button_login': 'Log in',
     'button_recover': 'Recover',
     'button_update': 'Update',
+    'button_create': 'Create',
     // Success
     'success_forgot': 'Please check your inbox and follow the instructions',
     'success_admin_update_details': 'Details updated successfully',
@@ -90,5 +96,11 @@ let lang = {
     'error_pass_new_length_max': 'The new password cannot have more than 50 chars',
     'error_pass_new_match': 'The new password must be different than the current one',
     'error_pass_new_invalid': 'The new password must have at least one digit, one letter and one special char',
-    'error_pass_changed': 'The password could not be changed, please try again'
+    'error_pass_changed': 'The password could not be changed, please try again',
+    'error_name_chars': 'The name can have only letters, digits and spaces',
+    'error_name_length_min': 'The name must have at least 1 char',
+    'error_name_length_max': 'The name can have 50 chars max',
+    'error_name_missing': 'Please enter a name',
+    'error_status_invalid': 'Please select a valid status',
+    'error_category_create': 'The category could not be created, please try again'
 }

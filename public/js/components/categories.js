@@ -3,6 +3,7 @@ $('title').text(lang['title_categories'] + ' | ' + lang['site_name']);
 $('h1').text(lang['title_categories']);
 $('#label_categories').html('<i class="fas fa-table"></i>&nbsp;' + lang['title_categories']);
 $('#searchText').attr('placeholder', lang['label_categories_placeholder']);
+$('#label_category_new').html('<i class="fas fa-plus"></i>&nbsp;' + lang['title_categories_new']);
 
 
 // Get categories
